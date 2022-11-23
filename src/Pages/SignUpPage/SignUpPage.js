@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signUp } from "../../services/auth";
+import StyledSignUpPage from "./SignUpStyle";
 
 export default function SignUpPage(params) {
   const [name, setName] = useState("");
@@ -6,22 +9,31 @@ export default function SignUpPage(params) {
   const [password, setPassword] = useState("");
   const [repetedPassword, setRepetedPassword] = useState("");
 
-    function createAccount(e){
-        e.preventDefault()
-        e.stopPropagation()
+    const navigate = useNavigate()
 
-        const body = {
-            name,
-            email,
-            password,
-            repetedPassword
-        }
+  function createAccount(e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-        console.log(body)
-    }
+    const body = {
+      name,
+      email,
+      password,
+      repetedPassword,
+    };
+    
+    signUp(body).then(res=>{
+        console.log(res.data)
+        navigate("/sign-in")
+    }).catch(err=>
+        console.log(err.response.data)
+    )
+
+    console.log(body);
+  }
 
   return (
-    <>
+    <StyledSignUpPage>
       <h1>Ichiraku Shop</h1>
       <form onSubmit={createAccount}>
         <input
@@ -52,10 +64,12 @@ export default function SignUpPage(params) {
           placeholder="COnfirmar senha"
           onChange={(e) => setRepetedPassword(e.target.value)}
         />
-        <button type="submit">
-            Cadastrar
-        </button>
+        <button type="submit">Cadastrar</button>
       </form>
-    </>
+
+      <Link to={"/"}>
+        <p>Já tem uma conta? Entre agora!</p>
+      </Link>
+    </StyledSignUpPage>
   );
 }

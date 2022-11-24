@@ -67,7 +67,7 @@ export default function SignUpPage(params) {
         <button type="submit">Cadastrar</button>
       </form>
 
-      <Link to={"/"}>
+      <Link to={"/sign-in"}>
         <p>Já tem uma conta? Entre agora!</p>
       </Link>
     </StyledSignUpPage>

@@ -13,7 +13,7 @@ const StyledSignUpPage = styled.div`
   h1 {
     font-size: 32px;
     margin-top: 60px;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
   }
 
   form {
@@ -21,23 +21,32 @@ const StyledSignUpPage = styled.div`
     flex-direction: column;
     justify-content: space-between;
     width: 80%;
-    height: 260px;
+
+    h2{
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
 
     input {
       width: 100%;
       height: 40px;
       background: #ffffff;
       border-radius: 5px;
+      margin: 4px;
     }
 
     button {
       width: 100%;
       height: 40px;
 
+      margin-top: 20px;
+
       background: #a32;
       border-radius: 5px;
 
       color: #ffffff;
+
+      font-size: 22px;
     }
   }
 

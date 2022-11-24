@@ -5,14 +5,14 @@ import SignInPage from "./Pages/SignInPage/SignInPage";
 import HomePage from "./Pages/HomePage/HomePage";
 
 export default function App(params) {
-  return(
+  return (
     <BrowserRouter>
-    <GlobalStyle />
-    <Routes>
-      <Route path="/sign-up" element={<SignUpPage/>}/>
-      <Route path="/sign-in" element={<SignInPage/>}/>
-      <Route path="/" element={<HomePage/>}/>
-    </Routes>
+      <GlobalStyle />
+      <Routes>
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </BrowserRouter>
   )
 };

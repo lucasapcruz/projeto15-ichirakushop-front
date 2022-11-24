@@ -29,6 +29,10 @@ const Container = styled.div`
     height: 80px;
     background-color: #f24726;
     padding: 10px 20px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
 `
 
 const NavBar = styled.div`

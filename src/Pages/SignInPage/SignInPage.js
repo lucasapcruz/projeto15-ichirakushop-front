@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/authContext";
 import { signIn } from "../../services/auth";
 import StyledSignInPage from "./SignInStyle";
 
 export default function SignInPage(params) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {setToken} = useContext(AuthContext)
 
   const navigate = useNavigate();
 
@@ -19,6 +21,7 @@ export default function SignInPage(params) {
 
     signIn(body).then(res=>{
         console.log(res.data)
+        setToken(res.data)
         navigate("/")
     }).catch(err=>
         console.log(err.response.data)

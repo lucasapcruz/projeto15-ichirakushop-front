@@ -13,8 +13,7 @@ export default function Header({ isHomePage }) {
             <Container>
                 <NavBar>
                     <LogoContainer>
-                        <img src={logo} />
-
+                        <img src={logo} alt="logo"/>
                         <p>Ichiraku</p>
 
                     </LogoContainer>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledSignUpPage = styled.div`
+const StyledSignInPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,40 +13,33 @@ const StyledSignUpPage = styled.div`
   h1 {
     font-size: 32px;
     margin-top: 60px;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 80%;
 
-    h2{
-      margin-top: 18px;
-      margin-bottom: 18px;
-    }
 
     input {
       width: 100%;
       height: 40px;
       background: #ffffff;
       border-radius: 5px;
-      margin: 4px;
+      margin: 5px;
     }
 
     button {
       width: 100%;
       height: 40px;
 
-      margin-top: 20px;
+      margin: 10px;
 
       background: #a32;
       border-radius: 5px;
 
       color: #ffffff;
-
-      font-size: 22px;
     }
   }
 
@@ -55,4 +48,4 @@ const StyledSignUpPage = styled.div`
   }
 `;
 
-export default StyledSignUpPage;
+export default StyledSignInPage;

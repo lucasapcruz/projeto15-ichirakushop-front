@@ -8,8 +8,11 @@ export default function SignUpPage(params) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repetedPassword, setRepetedPassword] = useState("");
+  const [cep, setCep] = useState("");
+  const [street, setStreet] = useState("");
+  const [houseNumber, setHouseNumber] = useState("");
 
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function createAccount(e) {
     e.preventDefault();
@@ -20,14 +23,17 @@ export default function SignUpPage(params) {
       email,
       password,
       repetedPassword,
+      cep,
+      street,
+      houseNumber
     };
-    
-    signUp(body).then(res=>{
-        console.log(res.data)
-        navigate("/sign-in")
-    }).catch(err=>
-        console.log(err.response.data)
-    )
+
+    signUp(body)
+      .then((res) => {
+        console.log(res.data);
+        navigate("/sign-in");
+      })
+      .catch((err) => console.log(err.response.data));
 
     console.log(body);
   }
@@ -36,6 +42,7 @@ export default function SignUpPage(params) {
     <StyledSignUpPage>
       <h1>Ichiraku Shop</h1>
       <form onSubmit={createAccount}>
+        <h2>Informações pessoais</h2>
         <input
           required
           type="text"
@@ -61,13 +68,35 @@ export default function SignUpPage(params) {
           required
           type="password"
           value={repetedPassword}
-          placeholder="COnfirmar senha"
+          placeholder="Confirmar senha"
           onChange={(e) => setRepetedPassword(e.target.value)}
+        />
+        <h2>Informações de endereço</h2>
+        <input
+          required
+          type="number"
+          value={cep}
+          placeholder="CEP"
+          onChange={(e) => setCep(e.target.value)}
+        />
+        <input
+          required
+          type="text"
+          value={street}
+          placeholder="nome da rua"
+          onChange={(e) => setStreet(e.target.value)}
+        />
+        <input
+          required
+          type="number"
+          value={houseNumber}
+          placeholder="número da casa"
+          onChange={(e) => setHouseNumber(e.target.value)}
         />
         <button type="submit">Cadastrar</button>
       </form>
 
-      <Link to={"/"}>
+      <Link to={"/sign-in"}>
         <p>Já tem uma conta? Entre agora!</p>
       </Link>
     </StyledSignUpPage>

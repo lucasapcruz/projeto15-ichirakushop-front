@@ -5,6 +5,7 @@ import SignInPage from "./Pages/SignInPage/SignInPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import UserPage from "./Pages/UserPage/UserPage";
 import AuthProvider from "./contexts/authContext";
+import CartPage from "./Pages/CartPage/CartPage";
 
 export default function App(params) {
   return (
@@ -16,6 +17,7 @@ export default function App(params) {
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/user" element={<UserPage/>} />
+        <Route path="/cart" element={<CartPage/>} />
       </Routes>
       </AuthProvider>
     </BrowserRouter>

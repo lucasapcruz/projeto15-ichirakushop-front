@@ -15,7 +15,7 @@ export default function Footer() {
         <>
             <Container>
                 <NavBar>
-                    <IoPerson size={iconSize} onClick={() => navigate("/me")}/>
+                    <IoPerson size={iconSize} onClick={() => navigate("/user")}/>
                     <HiHome size={iconSize} onClick={() => navigate("/")}/>
                     <IoCart size={iconSize} onClick={() => navigate("/cart")}/>
                 </NavBar>

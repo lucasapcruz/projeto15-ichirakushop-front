@@ -1,94 +1,44 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function HomePage() {
-  const macarrão =
-    "https://img.itdg.com.br/tdg/images/recipes/000/101/040/356212/356212_original.jpg?mode=crop&width=710&height=400";
+  const [products, setProducts] = useState([]);
 
-  const teste = [
-        {
-          nome: "produto",
-          img: macarrão,
-          qnt: "num",
-          preçouni: "num",
-          preçot: "num",
-        },
-        {
-          nome: "produto2",
-          img: macarrão,
-          qnt: "num2",
-          preçouni: "num2",
-          preçot: "num2",
-        },
-        {
-          nome: "produto3",
-          img: macarrão,
-          qnt: "num3",
-          preçouni: "num3",
-          preçot: "num3",
-        },
-        {
-          nome: "produto3",
-          img: macarrão,
-          qnt: "num3",
-          preçouni: "num3",
-          preçot: "num3",
-        },
-        {
-          nome: "produto",
-          img: macarrão,
-          qnt: "num",
-          preçouni: "num",
-          preçot: "num",
-        },
-        {
-          nome: "produto2",
-          img: macarrão,
-          qnt: "num2",
-          preçouni: "num2",
-          preçot: "num2",
-        },
-        {
-          nome: "produto3",
-          img: macarrão,
-          qnt: "num3",
-          preçouni: "num3",
-          preçot: "num3",
-        },
-        {
-          nome: "produto3",
-          img: macarrão,
-          qnt: "num3",
-          preçouni: "num3",
-          preçot: "num3",
-        },
-  ];
+  useEffect(()=>{
+    axios.get("http://localhost:5000/products")
+    .then(res=>{
+        console.log(res.data)
+        setProducts(res.data)
+    })
+    .catch(err=>console.log(err.response.data))
+  },[])
+
   return (
     <StyledHomePage>
       <Header isHomePage={true} />
       <ContainerHome>
       <ListTitle>Mais vendidos</ListTitle>
         <BestSellers>
-          {teste.map((obj) => (
+          {products.map((obj) => (
             <div>
-                <img src={obj.img}></img>
-                <p>{obj.nome}</p>
-                <p>{obj.preçouni}</p>
+                <img src={obj.image} alt="foto do produto"></img>
+                <p>{obj.name}</p>
+                <p>{obj.price}</p>
                 <button>Botar no carrin</button>
             </div>
           ))}
         </BestSellers>
         <ListTitle>Todos produtos</ListTitle>
         <Products>
-        {teste.map((obj) => (
+        {products.map((obj) => (
             <div>
-                <>
-                <img src={obj.img}></img>
-                <p>{obj.nome}</p>
-                <p>{obj.preçouni}</p>
+                <img src={obj.image} alt="foto do produto"></img>
+                <p>{obj.name}</p>
+                <p>{obj.price}</p>
                 <button>Botar no carrin</button>
-                </>
             </div>
           ))}
         </Products>

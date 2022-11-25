@@ -4,6 +4,7 @@ const StyledCartPage = styled.div`
   h1 {
     margin-top: 110px;
     font-size: 30px;
+    overflow-x: scroll;
   }
 `;
 
@@ -95,8 +96,11 @@ const Counter = styled.div`
 `;
 
 const StyledFinalInfo = styled.div`
-
-`
+  h1 {
+    margin-top: 40px;
+    margin-bottom: 100px;
+  }
+`;
 
 export {
   StyledCartPage,
@@ -106,5 +110,5 @@ export {
   LogoContainer,
   Stock,
   Counter,
-  StyledFinalInfo
+  StyledFinalInfo,
 };

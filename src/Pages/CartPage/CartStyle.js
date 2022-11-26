@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const StyledCartPage = styled.div`
+  overflow-x: scroll;
   h1 {
     margin-top: 110px;
     font-size: 30px;
-    overflow-x: scroll;
   }
 `;
 
@@ -96,9 +96,27 @@ const Counter = styled.div`
 `;
 
 const StyledFinalInfo = styled.div`
+  margin-bottom: 100px;
+  margin-top: 40px;
+  height: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
   h1 {
-    margin-top: 40px;
-    margin-bottom: 100px;
+    position: absolute;
+    bottom: 50px;
+  }
+
+  button {
+    width: 180px;
+    height: 40px;
+    font-size: 16px;
+
+    position: absolute;
+    bottom: 0px;
   }
 `;
 

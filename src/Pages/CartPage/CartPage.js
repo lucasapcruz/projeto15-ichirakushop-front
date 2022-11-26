@@ -4,9 +4,11 @@ import { StyledCartPage, StyledFinalInfo } from "./CartStyle";
 import styled from "styled-components";
 import { useState } from "react";
 import CartProduct from "./CartProduct";
+import { useNavigate } from "react-router-dom";
 
 export default function CartPage(params) {
   const [totalPrice, setTotalPrice] = useState(1);
+  const navigate = useNavigate()
 
   const macarrão =
     "https://img.itdg.com.br/tdg/images/recipes/000/101/040/356212/356212_original.jpg?mode=crop&width=710&height=400";
@@ -58,6 +60,7 @@ export default function CartPage(params) {
 
       <StyledFinalInfo>
         <h1>Valor Total : {totalPrice}</h1>
+        <button onClick={()=>navigate("/checkout")}>Ir para proxima etapa!</button>
       </StyledFinalInfo>
 
       <Footer />

@@ -116,8 +116,8 @@ export default function UserPage() {
         <p>Compras:</p>
         {teste.map((obj) => (
           <Orders>
-            {obj.compra.map((order) => (
-              <Product>
+            {obj.compra.map((order,idx) => (
+              <Product key={idx}>
                 <img src={order.img} alt="Foto do Produto"></img>
                 <div>
                   <div>{order.nome}</div>

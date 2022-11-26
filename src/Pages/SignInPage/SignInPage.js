@@ -24,7 +24,7 @@ export default function SignInPage(params) {
         setToken(res.data)
         navigate("/")
     }).catch(err=>
-        console.log(err.response.data)
+        alert("Dados incorretos!")
     )
 
     console.log(body);

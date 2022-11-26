@@ -1,18 +1,13 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import {
-  Counter,
-  LogoContainer,
-  ProductInfo,
-  ProductName,
-  Stock,
-  StyledCartPage,
-  StyledFinalInfo,
-  StyledProductsContainer,
-} from "./CartStyle";
+import { StyledCartPage, StyledFinalInfo } from "./CartStyle";
 import styled from "styled-components";
+import { useState } from "react";
+import CartProduct from "./CartProduct";
 
 export default function CartPage(params) {
+  const [totalPrice, setTotalPrice] = useState(1);
+
   const macarrão =
     "https://img.itdg.com.br/tdg/images/recipes/000/101/040/356212/356212_original.jpg?mode=crop&width=710&height=400";
 
@@ -22,30 +17,26 @@ export default function CartPage(params) {
       {
         nome: "produto",
         img: macarrão,
-        qnt: "num",
-        precouni: "num",
-        precot: "num",
+        precouni: 10,
+        qnt: 1
       },
       {
         nome: "produto2",
         img: macarrão,
-        qnt: "num2",
-        precouni: "num2",
-        precot: "num2",
+        precouni: 20,
+        qnt: 3
       },
       {
         nome: "produto3",
         img: macarrão,
-        qnt: "num3",
-        precouni: "num3",
-        precot: "num3",
+        precouni: 30,
+        qnt: 5
       },
       {
         nome: "produto3",
         img: macarrão,
-        qnt: "num3",
-        precouni: "num3",
-        precot: "num3",
+        precouni: 40,
+        qnt: 7
       },
     ],
   };
@@ -55,32 +46,18 @@ export default function CartPage(params) {
       <Header />
       <h1>Carrinho</h1>
       <Container>
-        {teste.compra.map((obj) => (
-          <StyledProductsContainer>
-            <ProductInfo>
-              <LogoContainer>
-                <img src={obj.img} alt="logo" />
-              </LogoContainer>
-              <ProductName>
-                <h3>{obj.nome}</h3>
-                <p>descrição do produto com apenas os caracteres inicais</p>
-              </ProductName>
-            </ProductInfo>
-            <Stock>
-              <Counter>
-                <button> - </button>
-                <p>{obj.qnt}</p>
-                <button> + </button>
-              </Counter>
-              <p>2345 disponiveis</p>
-              <h2>{obj.precot}</h2>
-            </Stock>
-          </StyledProductsContainer>
+        {teste.compra.map((obj,idx) => (
+          <CartProduct
+            data={obj}
+            key={idx}
+            setTotalPrice={setTotalPrice}
+            totalPrice={totalPrice}
+          />
         ))}
       </Container>
 
       <StyledFinalInfo>
-        <h1>Valor Total : R$12940,87</h1>
+        <h1>Valor Total : {totalPrice}</h1>
       </StyledFinalInfo>
 
       <Footer />

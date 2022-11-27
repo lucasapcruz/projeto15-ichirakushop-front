@@ -52,6 +52,7 @@ export default function SignInPage(params) {
       <Link to="/sign-up">
         <p>Primeira vez? Cadastre-se!</p>
       </Link>
+
     </StyledSignInPage>
   );
 }

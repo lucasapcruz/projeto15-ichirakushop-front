@@ -8,23 +8,21 @@ import {
 } from "./CartStyle";
 import { useState } from "react";
 
-export default function CartProduct({ data, setTotalPrice, totalPrice }) {
+export default function CartProduct({ data }) {
   const [productQuantity, setProductQuantity] = useState(data.qnt);
 
   function countDown() {
-    let newProducQuantity = productQuantity - 1
-    if(newProducQuantity > 0){
+    let newProducQuantity = productQuantity - 1;
+    
+    if (newProducQuantity > 0) {
       setProductQuantity(newProducQuantity);
-      setTotalPrice(totalPrice - data.precouni);
-    }else{
-      setProductQuantity(0)
+    } else {
+      setProductQuantity(0);
     }
-
   }
 
   function countUp() {
     setProductQuantity(productQuantity + 1);
-    setTotalPrice(totalPrice + data.precouni);
   }
 
   return (

@@ -9,9 +9,13 @@ import { CartContext } from "../../contexts/cartContext";
 export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [bestSellers, setBestSellers] =useState([])
-  const {cartId} = useContext(CartContext)
+  const {cartId} = useContext(CartContext);
+  const {token, config} = useContext(AuthContext)
 
   useEffect(()=>{
+
+    if (token){
+    }
 
     if (!cartId){
       axios.post("http://localhost:5000/cart",{products:[]})

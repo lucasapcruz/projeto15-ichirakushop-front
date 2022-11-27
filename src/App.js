@@ -5,18 +5,21 @@ import SignInPage from "./Pages/SignInPage/SignInPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import UserPage from "./Pages/UserPage/UserPage";
 import AuthProvider from "./contexts/authContext";
+import CartProvider from "./contexts/cartContext";
 
 export default function App(params) {
   return (
     <BrowserRouter>
       <GlobalStyle />
       <AuthProvider>
+      <CartProvider>
       <Routes>
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/user" element={<UserPage/>} />
       </Routes>
+      </CartProvider>
       </AuthProvider>
     </BrowserRouter>
   )

@@ -22,6 +22,7 @@ export default function SignInPage(params) {
     signIn(body).then(res=>{
         console.log(res.data)
         setToken(res.data)
+        localStorage.setItem("token", res.data);
         navigate("/")
     }).catch(err=>
         console.log(err.response.data)

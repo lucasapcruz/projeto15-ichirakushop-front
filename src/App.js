@@ -6,12 +6,14 @@ import HomePage from "./Pages/HomePage/HomePage";
 import UserPage from "./Pages/UserPage/UserPage";
 import AuthProvider from "./contexts/authContext";
 import CartPage from "./Pages/CartPage/CartPage";
+import CartProvider from "./contexts/cartContext";
 
 export default function App(params) {
   return (
     <BrowserRouter>
       <GlobalStyle />
       <AuthProvider>
+      <CartProvider>
       <Routes>
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
@@ -19,6 +21,7 @@ export default function App(params) {
         <Route path="/user" element={<UserPage/>} />
         <Route path="/cart" element={<CartPage/>} />
       </Routes>
+      </CartProvider>
       </AuthProvider>
     </BrowserRouter>
   )

@@ -9,18 +9,26 @@ import { CartContext } from "../../contexts/cartContext";
 export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [bestSellers, setBestSellers] =useState([])
-  const {cartId} = useContext(CartContext);
+  const {cartId, setCartId} = useContext(CartContext);
   const {token, config} = useContext(AuthContext)
 
   useEffect(()=>{
 
     if (token){
+      axios.get("http://localhost:5000/cart", config)
+      .then(res=> {
+        console.log(res.data)
+        setCartId(res.data._id)
+        localStorage.setItem("cartId", res.data._id);
+      })
+      .catch(err=> err.response.data)
     }
 
     if (!cartId){
       axios.post("http://localhost:5000/cart",{products:[]})
       .then(res=> {
         console.log(res.data)
+        setCartId(res.data._id)
         localStorage.setItem("cartId", res.data._id)
       })
       .catch(err=> console.log(err.response.data))

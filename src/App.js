@@ -7,12 +7,14 @@ import UserPage from "./Pages/UserPage/UserPage";
 import AuthProvider from "./contexts/authContext";
 import CartPage from "./Pages/CartPage/CartPage";
 import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
+import CartProvider from "./contexts/cartContext";
 
 export default function App(params) {
   return (
     <BrowserRouter>
       <GlobalStyle />
       <AuthProvider>
+      <CartProvider>
       <Routes>
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
@@ -21,6 +23,7 @@ export default function App(params) {
         <Route path="/cart" element={<CartPage/>} />
         <Route path="/checkout" element={<CheckoutPage/>}/>
       </Routes>
+      </CartProvider>
       </AuthProvider>
     </BrowserRouter>
   )

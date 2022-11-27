@@ -1,20 +1,55 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../contexts/authContext";
+import { CartContext } from "../../contexts/cartContext";
 
 export default function HomePage() {
   const [products, setProducts] = useState([]);
+  const [bestSellers, setBestSellers] =useState([])
+  const {cartId} = useContext(CartContext)
 
   useEffect(()=>{
+
+    if (!cartId){
+      axios.post("http://localhost:5000/cart",{products:[]})
+      .then(res=> {
+        console.log(res.data)
+        localStorage.setItem("cartId", res.data._id)
+      })
+      .catch(err=> console.log(err.response.data))
+    } else {
+      axios.get(`http://localhost:5000/cart/${cartId}`)
+      .then(res=> res.data)
+      .catch(err=> err.response.data)
+    }
+
     axios.get("http://localhost:5000/products")
     .then(res=>{
         console.log(res.data)
         setProducts(res.data)
     })
     .catch(err=>console.log(err.response.data))
+    
+    axios.get("http://localhost:5000/products?tag=bestSeller")
+    .then(res=>{
+        console.log(res.data)
+        setBestSellers(res.data)
+    })
+    .catch(err=>console.log(err.response.data))
   },[])
+
+  function addInCart(id, price){
+    console.log(id,price)
+    console.log(cartId)
+
+    axios.put(`http://localhost:5000/cart/${cartId}/products`, {products:[{productId: id, productQt:1}]})
+    .then(res=> console.log(res.data))
+    .catch(err=> err.response.data)
+    
+  }
 
   return (
     <StyledHomePage>
@@ -22,12 +57,12 @@ export default function HomePage() {
       <ContainerHome>
       <ListTitle>Mais vendidos</ListTitle>
         <BestSellers>
-          {products.map((obj) => (
+          {bestSellers.map((obj) => (
             <div>
                 <img src={obj.image} alt="foto do produto"></img>
                 <p>{obj.name}</p>
                 <p>{obj.price}</p>
-                <button>Botar no carrin</button>
+                <button onClick={()=>addInCart(obj._id, obj.price)}>Botar no carrin</button>
             </div>
           ))}
         </BestSellers>

@@ -33,7 +33,7 @@ export default function SignUpPage(params) {
         console.log(res.data);
         navigate("/sign-in");
       })
-      .catch((err) => console.log(err.response.data));
+      .catch((err) => alert("Preencha os dados de acordo!"));
 
     console.log(body);
   }

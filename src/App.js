@@ -5,6 +5,8 @@ import SignInPage from "./Pages/SignInPage/SignInPage";
 import HomePage from "./Pages/HomePage/HomePage";
 import UserPage from "./Pages/UserPage/UserPage";
 import AuthProvider from "./contexts/authContext";
+import CartPage from "./Pages/CartPage/CartPage";
+import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 import CartProvider from "./contexts/cartContext";
 
 export default function App(params) {
@@ -18,6 +20,8 @@ export default function App(params) {
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/user" element={<UserPage/>} />
+        <Route path="/cart" element={<CartPage/>} />
+        <Route path="/checkout" element={<CheckoutPage/>}/>
       </Routes>
       </CartProvider>
       </AuthProvider>

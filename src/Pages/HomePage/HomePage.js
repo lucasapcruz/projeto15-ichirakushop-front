@@ -18,6 +18,14 @@ export default function HomePage() {
       axios.get("http://localhost:5000/cart", config)
       .then(res=> {
         console.log(res.data)
+        if (cartId!==res.data._id){
+          axios.put(`http://localhost:5000/cart/${cartId}`,{}, config)
+          .then(resp=> console.log(resp.data))
+          .catch(error=> console.log(error.response.data))
+          axios.delete(`http://localhost:5000/cart/${cartId}`,config)
+          .then(resp=>  console.log(resp.data))
+          .catch(error=> console.log(error.response.data))
+        }
         setCartId(res.data._id)
         localStorage.setItem("cartId", res.data._id);
       })
@@ -85,7 +93,7 @@ export default function HomePage() {
                 <img src={obj.image} alt="foto do produto"></img>
                 <p>{obj.name}</p>
                 <p>{obj.price}</p>
-                <button>Botar no carrin</button>
+                <button onClick={()=>addInCart(obj._id, obj.price)}>Botar no carrin</button>
             </div>
           ))}
         </Products>

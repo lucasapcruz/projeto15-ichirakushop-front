@@ -3,25 +3,33 @@ import { useContext, useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { AuthContext } from "../../contexts/authContext";
+import { CartContext } from "../../contexts/cartContext";
+import CheckoutProductDisplay from "./CheckoutProductDisplay";
 import {
   Container,
-  LogoContainer,
   PersonalInfo,
-  Price,
   ProductInfo,
-  ProductName,
 } from "./CheckoutStyle";
 
 export default function CheckoutPage(params) {
   const [userInfo, setUserInfo] = useState([]);
+  const [cartData, setCartData] = useState()
   const { config } = useContext(AuthContext);
+  const {cartId} = useContext(CartContext);
+
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/user", config)
       .then((res) => {
-        console.log(res.data[0]);
         setUserInfo(res.data[0]);
+      })
+      .catch((err) => console.log(err));
+
+    axios
+      .get("http://localhost:5000/cart", config)
+      .then((res) => {
+        setCartData(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -40,17 +48,13 @@ export default function CheckoutPage(params) {
           <p>{`Número: ${userInfo.houseNumber}`}</p>
         </PersonalInfo>
         <ProductInfo>
-          <LogoContainer>
-            <img src="" alt="logo" />
-          </LogoContainer>
-          <ProductName>
-            <h3>NOME</h3>
-            <p>descrição do produto com apenas os caracteres inicais</p>
-            <Price>
-              <h2>3 unidades</h2>
-              <h2>R$ 100,97</h2>
-            </Price>
-          </ProductName>
+        {cartData.products.map((obj, idx) => (
+          <CheckoutProductDisplay
+            id={obj.productId}
+            cartId = {cartId}
+            data={obj}
+            key={idx} />
+        ))}
         </ProductInfo>
       </Container>
       <Footer />

@@ -6,44 +6,65 @@ import {
   Stock,
   StyledProductsContainer,
 } from "./CartStyle";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { AuthContext,  } from "../../contexts/authContext";
 
-export default function CartProduct({ data }) {
-  const [productQuantity, setProductQuantity] = useState(data.qnt);
+export default function CartProduct({ data , cartId, setCartData}) {
+  const [productQuantity, setProductQuantity] = useState(data.productQt);
+  const [productInfo, setProductInfo] = useState({})
+  const { config } = useContext(AuthContext);
+  
+  useEffect(() => {
+    axios.get(`http://localhost:5000/products/${data.productId}`, config)
+    .then(res => setProductInfo(res.data))
+    .catch(err => console.log(err.response.data))
+  }, [])
 
-  function countDown() {
-    let newProducQuantity = productQuantity - 1;
-    
-    if (newProducQuantity > 0) {
-      setProductQuantity(newProducQuantity);
-    } else {
-      setProductQuantity(0);
+
+  function updateProductQt(operation){
+    let newQuantity
+    if(operation === "add"){
+     newQuantity = productQuantity + 1
+      setProductQuantity(newQuantity)
+    }else{
+      newQuantity = productQuantity - 1
+      setProductQuantity(newQuantity)
     }
-  }
 
-  function countUp() {
-    setProductQuantity(productQuantity + 1);
+    const updatePayload = {
+      products: [
+        {
+          productId: data.productId,
+          productQt: newQuantity
+        }
+      ]
+    }
+    axios.put(`http://localhost:5000/cart/${cartId}/products`, updatePayload, config)
+    .then(res => {
+      console.log(res.data)
+      setCartData(res.data)})
+    .catch(err => console.log(err.response.data))
   }
 
   return (
     <StyledProductsContainer>
       <ProductInfo>
         <LogoContainer>
-          <img src={data.img} alt="logo" />
+          <img src={productInfo.image} alt={productInfo.description} />
         </LogoContainer>
         <ProductName>
-          <h3>{data.nome}</h3>
-          <p>descrição do produto com apenas os caracteres inicais</p>
+          <h3>{productInfo.name}</h3>
+          <p>{productInfo.description}</p>
         </ProductName>
       </ProductInfo>
       <Stock>
         <Counter>
-          <button onClick={countDown}> - </button>
+          <button onClick={() => updateProductQt("subtract")}> - </button>
           <p>{productQuantity}</p>
-          <button onClick={countUp}> + </button>
+          <button onClick={() => updateProductQt("add")}> + </button>
         </Counter>
-        <p>2345 disponiveis</p>
-        <h2>{`R$${data.precouni * productQuantity}`}</h2>
+        <h2>{`R$${data.price * productQuantity}`}</h2>
       </Stock>
     </StyledProductsContainer>
   );

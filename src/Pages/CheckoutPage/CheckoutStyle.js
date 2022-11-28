@@ -61,11 +61,39 @@ display:flex;
 justify-content: space-between;
 `;
 
+const Stock = styled.div`
+  width: 100%;
+  padding-bottom: 10px;
+  position: relative;
+
+  p {
+    color: #a0a0a0;
+    margin-left: 10px;
+  }
+
+  h2 {
+    position: absolute;
+    right: 60px;
+    bottom: 40px;
+  }
+`;
+
+const StyledProductsContainer = styled.section`
+  margin-top: 24px;
+  border: 1px black solid;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+
 export {
   Container,
   PersonalInfo,
   ProductInfo,
   LogoContainer,
   ProductName,
+  Stock,
   Price,
+  StyledProductsContainer
 };

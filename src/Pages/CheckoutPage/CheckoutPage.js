@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { AuthContext } from "../../contexts/authContext";
@@ -9,6 +10,7 @@ import {
   Container,
   PersonalInfo,
   ProductInfo,
+  StyledFinalInfo,
 } from "./CheckoutStyle";
 
 export default function CheckoutPage(params) {
@@ -16,6 +18,8 @@ export default function CheckoutPage(params) {
   const [cartData, setCartData] = useState()
   const { config } = useContext(AuthContext);
   const {cartId} = useContext(CartContext);
+
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -29,10 +33,26 @@ export default function CheckoutPage(params) {
     axios
       .get("http://localhost:5000/cart", config)
       .then((res) => {
+        console.log(res.data)
         setCartData(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  function validateAndCreateOrder(cartId){
+    const payload = {
+      cartId
+    }
+    axios.post("http://localhost:5000/order", payload,config)
+    .then(res => {
+      console.log(res.data)
+      alert("Pedido criado com sucesso")
+      navigate("/")
+    })
+    .catch(err => {
+      alert("Ops, tivemos um problema")
+    })
+  }
 
   return (
     <>
@@ -48,14 +68,18 @@ export default function CheckoutPage(params) {
           <p>{`Número: ${userInfo.houseNumber}`}</p>
         </PersonalInfo>
         <ProductInfo>
-        {cartData.products.map((obj, idx) => (
+        {cartData? cartData.products.map((obj, idx) => (
           <CheckoutProductDisplay
             id={obj.productId}
             cartId = {cartId}
             data={obj}
             key={idx} />
-        ))}
+        )):null}
         </ProductInfo>
+        <StyledFinalInfo>
+          <h1>Valor Total: {cartData?cartData.totalPrice: ""}</h1>
+          {cartData? <button onClick={() => validateAndCreateOrder(cartData._id)}>Fazer pedido</button> : null}
+        </StyledFinalInfo>
       </Container>
       <Footer />
     </>

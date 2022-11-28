@@ -86,6 +86,31 @@ const StyledProductsContainer = styled.section`
   flex-direction: column;
 `;
 
+const StyledFinalInfo = styled.div`
+  margin-bottom: 100px;
+  margin-top: 40px;
+  height: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    position: absolute;
+    bottom: 50px;
+  }
+
+  button {
+    width: 180px;
+    height: 40px;
+    font-size: 16px;
+
+    position: absolute;
+    bottom: 0px;
+  }
+`;
+
 
 export {
   Container,
@@ -95,5 +120,6 @@ export {
   ProductName,
   Stock,
   Price,
-  StyledProductsContainer
+  StyledProductsContainer,
+  StyledFinalInfo
 };

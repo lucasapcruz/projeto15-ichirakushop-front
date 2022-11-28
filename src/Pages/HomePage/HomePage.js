@@ -15,14 +15,14 @@ export default function HomePage() {
   useEffect(()=>{
 
     if (token){
-      axios.get("http://localhost:5000/cart", config)
+      axios.get("https://ichiraku-shop.onrender.com/cart", config)
       .then(res=> {
         console.log(res.data)
         if (cartId!==res.data._id){
-          axios.put(`http://localhost:5000/cart/${cartId}`,{}, config)
+          axios.put(`https://ichiraku-shop.onrender.com/cart/${cartId}`,{}, config)
           .then(resp=> console.log(resp.data))
           .catch(error=> console.log(error.response.data))
-          axios.delete(`http://localhost:5000/cart/${cartId}`,config)
+          axios.delete(`https://ichiraku-shop.onrender.com/cart/${cartId}`,config)
           .then(resp=>  console.log(resp.data))
           .catch(error=> console.log(error.response.data))
         }
@@ -33,7 +33,7 @@ export default function HomePage() {
     }
 
     if (!cartId){
-      axios.post("http://localhost:5000/cart",{products:[]})
+      axios.post("https://ichiraku-shop.onrender.com/cart",{products:[]})
       .then(res=> {
         console.log(res.data)
         setCartId(res.data._id)
@@ -41,19 +41,19 @@ export default function HomePage() {
       })
       .catch(err=> console.log(err.response.data))
     } else {
-      axios.get(`http://localhost:5000/cart/${cartId}`)
+      axios.get(`https://ichiraku-shop.onrender.com/cart/${cartId}`)
       .then(res=> res.data)
       .catch(err=> err.response.data)
     }
 
-    axios.get("http://localhost:5000/products")
+    axios.get("https://ichiraku-shop.onrender.com/products")
     .then(res=>{
         console.log(res.data)
         setProducts(res.data)
     })
     .catch(err=>console.log(err.response.data))
     
-    axios.get("http://localhost:5000/products?tag=bestSeller")
+    axios.get("https://ichiraku-shop.onrender.com/products?tag=bestSeller")
     .then(res=>{
         console.log(res.data)
         setBestSellers(res.data)
@@ -65,7 +65,7 @@ export default function HomePage() {
     console.log(id,price)
     console.log(cartId)
 
-    axios.put(`http://localhost:5000/cart/${cartId}/products`, {products:[{productId: id, productQt:1}]})
+    axios.put(`https://ichiraku-shop.onrender.com/cart/${cartId}/products`, {products:[{productId: id, productQt:1}]})
     .then(res=> console.log(res.data))
     .catch(err=> err.response.data)
     

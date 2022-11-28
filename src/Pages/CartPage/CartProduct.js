@@ -16,7 +16,7 @@ export default function CartProduct({ data , cartId, setCartData}) {
   const { config } = useContext(AuthContext);
   
   useEffect(() => {
-    axios.get(`http://localhost:5000/products/${data.productId}`, config)
+    axios.get(`https://ichiraku-shop.onrender.com/products/${data.productId}`, config)
     .then(res => setProductInfo(res.data))
     .catch(err => console.log(err.response.data))
   }, [])
@@ -40,7 +40,7 @@ export default function CartProduct({ data , cartId, setCartData}) {
         }
       ]
     }
-    axios.put(`http://localhost:5000/cart/${cartId}/products`, updatePayload, config)
+    axios.put(`https://ichiraku-shop.onrender.com/cart/${cartId}/products`, updatePayload, config)
     .then(res => {
       console.log(res.data)
       setCartData(res.data)})

@@ -14,7 +14,7 @@ export default function CheckoutProductDisplay({ data , cartId}) {
   const { config } = useContext(AuthContext);
   
   useEffect(() => {
-    axios.get(`http://localhost:5000/products/${data.productId}`, config)
+    axios.get(`https://ichiraku-shop.onrender.com/products/${data.productId}`, config)
     .then(res => setProductInfo(res.data))
     .catch(err => console.log(err.response.data))
   }, [])

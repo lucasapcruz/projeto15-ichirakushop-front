@@ -24,7 +24,7 @@ export default function SignInPage(params) {
         console.log("sign-in data",res.data)
         setToken(res.data)
         localStorage.setItem("token", res.data);
-        axios.post("http://localhost:5000/cart",{products:[]},{
+        axios.post("https://ichiraku-shop.onrender.com/cart",{products:[]},{
           headers: {
             Authorization: `Bearer ${res.data}`,
           },

@@ -1,24 +1,29 @@
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { IoPerson, IoCart } from "react-icons/io5";
-import { HiHome } from "react-icons/hi";
+import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import { IoPerson, IoCart } from "react-icons/io5"
+import { HiHome } from "react-icons/hi"
+import { useContext } from "react"
+import { AuthContext } from "../contexts/authContext"
+
+
 
 export default function Footer() {
   const navigate = useNavigate();
+    const {token} = useContext(AuthContext)
 
   const iconSize = "25px";
 
-  return (
-    <>
-      <Container>
-        <NavBar>
-          <IoPerson size={iconSize} onClick={() => navigate("/user")} />
-          <HiHome size={iconSize} onClick={() => navigate("/")} />
-          <IoCart size={iconSize} onClick={() => navigate("/cart")} />
-        </NavBar>
-      </Container>
-    </>
-  );
+    return (
+        <>
+            <Container>
+                <NavBar>
+                    <IoPerson size={iconSize} onClick={() => token ? navigate("/user") : navigate("/sign-in")}/>
+                    <HiHome size={iconSize} onClick={() => navigate("/")}/>
+                    <IoCart size={iconSize} onClick={() => navigate("/cart")}/>
+                </NavBar>
+            </Container>
+        </>
+    )
 }
 
 const Container = styled.div`

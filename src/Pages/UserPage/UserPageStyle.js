@@ -24,6 +24,7 @@ export const Infos = styled.div`
   margin-bottom: 20px;
 `;
 export const Orders = styled.div`
+background-color: #ffffff90;
   margin-bottom: 20px;
   border: 1px solid black;
 `;
@@ -31,6 +32,7 @@ export const Product = styled.div`
   margin-bottom: 10px;
   border: 1px solid green;
   display: flex;
+  align-items: center;
   img {
     height: 64px;
     width: 64px;

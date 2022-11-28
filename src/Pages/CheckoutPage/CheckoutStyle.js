@@ -22,6 +22,7 @@ const ProductInfo = styled.div`
   display: flex;
   margin: 10px;
   border: lightgrey 1px solid;
+  overflow-x: auto;
 `;
 
 const LogoContainer = styled.div`
@@ -43,11 +44,11 @@ const ProductName = styled.div`
   flex-direction: column;
   height: 100px;
   margin: 10px;
-  justify-content: space-between;
 
   h3 {
     font-size: 24px;
     color: #1c1c1c;
+    margin-bottom: 20%;
   }
 
   p {
@@ -80,6 +81,7 @@ const Stock = styled.div`
 
 const StyledProductsContainer = styled.section`
   margin-top: 24px;
+  margin-right: 10px;
   border: 1px black solid;
 
   display: flex;

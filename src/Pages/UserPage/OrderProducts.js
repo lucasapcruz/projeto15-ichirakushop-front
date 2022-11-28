@@ -7,7 +7,6 @@ export default function OrderProducts({product}) {
   useEffect(()=>{
     axios.get(`http://localhost:5000/products/${product.productId}`)
     .then(res=> {
-      console.log(res.data)
       setProductInfo(res.data)
     })
     .catch(err=>console.log(err.response.data))

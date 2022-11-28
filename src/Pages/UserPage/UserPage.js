@@ -22,13 +22,11 @@ export default function UserPage() {
     axios
       .get("http://localhost:5000/user", config)
       .then((res) => {
-        console.log(res.data[0]);
         setUserInfo(res.data[0]);
       })
       .catch((err) => console.log(err.response.data));
       axios.get("http://localhost:5000/orders", config)
       .then(res=> {
-        console.log(res.data)
         setUserOrders(res.data)
       })
       .catch(err=> console.log(err.response.data))

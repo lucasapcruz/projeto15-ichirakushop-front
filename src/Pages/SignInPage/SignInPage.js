@@ -21,7 +21,7 @@ export default function SignInPage(params) {
     }
 
     signIn(body).then(res=>{
-        console.log(res.data)
+        console.log("sign-in data",res.data)
         setToken(res.data)
         localStorage.setItem("token", res.data);
         axios.post("http://localhost:5000/cart",{products:[]},{
@@ -33,10 +33,8 @@ export default function SignInPage(params) {
         .catch(err=> console.log(err.response.data))
         navigate("/")
     }).catch(err=>
-        console.log(err.response.data)
+        alert("Dados incorretos!")
     )
-
-    console.log(body);
   }
 
   return (
@@ -62,6 +60,7 @@ export default function SignInPage(params) {
       <Link to="/sign-up">
         <p>Primeira vez? Cadastre-se!</p>
       </Link>
+
     </StyledSignInPage>
   );
 }

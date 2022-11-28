@@ -8,11 +8,10 @@ import { AuthContext } from "../contexts/authContext"
 
 
 export default function Footer() {
+  const navigate = useNavigate();
     const {token} = useContext(AuthContext)
 
-    const navigate = useNavigate()
-
-    const iconSize = "25px"
+  const iconSize = "25px";
 
     return (
         <>
@@ -28,18 +27,19 @@ export default function Footer() {
 }
 
 const Container = styled.div`
-    height: 60px;
-    background-color: #12cdd4;
-    padding: 10px 20px;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-`
+  z-index: 1;
+  height: 60px;
+  background-color: #12cdd4;
+  padding: 10px 20px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+`;
 
 const NavBar = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 17.5px;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 17.5px;
+`;

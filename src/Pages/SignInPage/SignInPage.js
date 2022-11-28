@@ -55,7 +55,7 @@ export default function SignInPage(params) {
           placeholder="Senha"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Entrar</button>
       </form>
       <Link to="/sign-up">
         <p>Primeira vez? Cadastre-se!</p>

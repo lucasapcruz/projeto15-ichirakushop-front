@@ -14,7 +14,7 @@ export default function CartPage(params) {
   const { config } = useContext(AuthContext);
   
   useEffect(() => {
-    axios.get("http://localhost:5000/user", config)
+    axios.get("http://localhost:5000/cart", config)
     .then(res=>setCartData(res.data))
     .catch(err=>console.log(err.response.data))
   }, []);

@@ -29,7 +29,7 @@ export default function Footer() {
 const Container = styled.div`
   z-index: 1;
   height: 60px;
-  background-color: #12cdd4;
+  background-color: #416445;
   padding: 10px 20px;
   position: fixed;
   bottom: 0px;

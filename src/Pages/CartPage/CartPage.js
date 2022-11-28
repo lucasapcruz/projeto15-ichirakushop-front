@@ -16,7 +16,6 @@ export default function CartPage(params) {
   const { token, config } = useContext(AuthContext);
 
   useEffect(() => {
-
     if(token){
       axios.get("http://localhost:5000/cart", config)
       .then(res => setCartData(res.data))
@@ -26,6 +25,7 @@ export default function CartPage(params) {
       .then(res => setCartData(res.data))
       .catch(err => console.log(err.response.data))
     }
+
   }, []);
 
   function validateAndGoToCheckout(token) {

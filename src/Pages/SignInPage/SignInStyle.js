@@ -7,13 +7,14 @@ const StyledSignInPage = styled.div`
 
   width: 100%;
   height: 100vh;
-
-  background-color: #ffa;
   position: relative;
 
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20210206/pngtree-light-wood-grain-background-image_557628.jpg);
+
   h1 {
-    font-size: 40px;
+    font-family: "Special Elite", cursive;
     font-weight: bold;
+    font-size: 40px;
     margin-top: 60px;
     margin-bottom: 24px;
   }
@@ -26,20 +27,30 @@ const StyledSignInPage = styled.div`
 
     input {
       width: 100%;
-      height: 60px;
+      height: 40px;
       background: #ffffff;
       border-radius: 5px;
-      margin: 10px 0px;
+      margin: 4px;
+
+      ::placeholder {
+        font-size: 14px;
+        font-weight: bold;
+        font-family: "Playfair Display", serif;
+      }
     }
 
     button {
       width: 100%;
-      height: 60px;
+      height: 50px;
       font-size: 20px;
 
-      background: #a32;
+      background: #aa3322;
       border-radius: 5px;
       color: #ffffff;
+
+      font-size: 22px;
+      font-weight: bold;
+      font-family: 'Playfair Display', serif;
     }
   }
 

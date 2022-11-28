@@ -2,15 +2,20 @@ import styled from "styled-components";
 
 export const StyledUserPage = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  overflow-y: scroll;
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20210206/pngtree-light-wood-grain-background-image_557628.jpg);
+
 `;
 
 export const ContainerUserPage = styled.div`
   margin: 80px 0 60px 0;
   padding: 20px;
   p {
-    font-size: x-large;
+    font-size: 24px;
     margin-bottom: 7px;
+    font-weight: bold;
+      font-family: "Special Elite", cursive;
   }
 `;
 

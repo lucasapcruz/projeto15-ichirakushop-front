@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
@@ -23,6 +24,13 @@ export default function SignInPage(params) {
         console.log("sign-in data",res.data)
         setToken(res.data)
         localStorage.setItem("token", res.data);
+        axios.post("http://localhost:5000/cart",{products:[]},{
+          headers: {
+            Authorization: `Bearer ${res.data}`,
+          },
+        })
+        .then(res=> console.log(res.data))
+        .catch(err=> console.log(err.response.data))
         navigate("/")
     }).catch(err=>
         alert("Dados incorretos!")

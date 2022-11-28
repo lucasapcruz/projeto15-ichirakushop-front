@@ -5,7 +5,7 @@ import { Product } from "./UserPageStyle";
 export default function OrderProducts({product}) {
   const [productInfo, setProductInfo] = useState({})
   useEffect(()=>{
-    axios.get(`http://localhost:5000/products/${product.productId}`)
+    axios.get(`https://ichiraku-shop.onrender.com/products/${product.productId}`)
     .then(res=> {
       setProductInfo(res.data)
     })

@@ -17,11 +17,11 @@ export default function CartPage(params) {
 
   useEffect(() => {
     if(token){
-      axios.get("http://localhost:5000/cart", config)
+      axios.get("https://ichiraku-shop.onrender.com/cart", config)
       .then(res => setCartData(res.data))
       .catch(err => console.log(err.response.data))
     }else{
-      axios.get(`http://localhost:5000/cart/${cartId}`, config)
+      axios.get(`https://ichiraku-shop.onrender.com/cart/${cartId}`, config)
       .then(res => setCartData(res.data))
       .catch(err => console.log(err.response.data))
     }

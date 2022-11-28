@@ -20,12 +20,12 @@ export default function UserPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/user", config)
+      .get("https://ichiraku-shop.onrender.com/user", config)
       .then((res) => {
         setUserInfo(res.data[0]);
       })
       .catch((err) => console.log(err.response.data));
-      axios.get("http://localhost:5000/orders", config)
+      axios.get("https://ichiraku-shop.onrender.com/orders", config)
       .then(res=> {
         setUserOrders(res.data)
       })

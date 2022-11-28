@@ -24,14 +24,14 @@ export default function CheckoutPage(params) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/user", config)
+      .get("https://ichiraku-shop.onrender.com/user", config)
       .then((res) => {
         setUserInfo(res.data[0]);
       })
       .catch((err) => console.log(err));
 
     axios
-      .get("http://localhost:5000/cart", config)
+      .get("https://ichiraku-shop.onrender.com/cart", config)
       .then((res) => {
         console.log(res.data)
         setCartData(res.data);
@@ -43,7 +43,7 @@ export default function CheckoutPage(params) {
     const payload = {
       cartId
     }
-    axios.post("http://localhost:5000/order", payload,config)
+    axios.post("https://ichiraku-shop.onrender.com/order", payload,config)
     .then(res => {
       console.log(res.data)
       alert("Pedido criado com sucesso")

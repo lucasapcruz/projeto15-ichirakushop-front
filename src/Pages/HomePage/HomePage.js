@@ -90,6 +90,8 @@ export default function HomePage() {
 const StyledHomePage = styled.div`
   width: 100%;
   height: 100vh;
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20210206/pngtree-light-wood-grain-background-image_557628.jpg);
+
 `;
 
 const ContainerHome = styled.div`
@@ -99,9 +101,11 @@ const ContainerHome = styled.div`
 
 const ListTitle = styled.p`
     font-size: x-large;
-    font-weight: 400;
+    font-weight: bold;
     margin-bottom: 10px;
     margin-left: 10px;
+    font-size: 22px;
+    font-family: "Special Elite", cursive;
 `
 
 const BestSellers = styled.div`

@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
 const StyledCartPage = styled.div`
+  min-height: 100vh;
   overflow-x: scroll;
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20210206/pngtree-light-wood-grain-background-image_557628.jpg);
+
   h1 {
-    margin-top: 110px;
+    font-family: "Special Elite", cursive;
+    font-weight: bold;
     font-size: 30px;
+    margin-top: 110px;
   }
 `;
 

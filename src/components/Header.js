@@ -12,7 +12,7 @@ export default function Header({ isHomePage }) {
         <NavBar>
           <LogoContainer>
             <img src={logo} alt="logo" />
-            <p>Ichiraku</p>
+            <p>Ichiraku Shop</p>
           </LogoContainer>
           {isHomePage ? null : (
             <IoMdArrowRoundBack onClick={() => navigate(-1)} />
@@ -26,7 +26,7 @@ export default function Header({ isHomePage }) {
 const Container = styled.div`
   z-index: 1;
   height: 80px;
-  background-color: #f24726;
+  background-color: #CB3724;
   padding: 10px 20px;
   position: fixed;
   top: 0px;
@@ -41,7 +41,7 @@ const NavBar = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  width: 150px;
+  width: 100%;
   display: flex;
   align-items: center;
 
@@ -54,6 +54,7 @@ const LogoContainer = styled.div`
   p {
     font-weight: bold;
     padding: 0 10px 0 0;
-    font-size: 20px;
+    font-size: 30px;
+    font-family: "Special Elite", cursive;
   }
 `;
